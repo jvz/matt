@@ -1,0 +1,34 @@
+Homebrew Formulae:
+
+* aria2 - download util
+* gdub - gradle manager thing
+* gradle
+* maven
+* git
+* git-extras
+* hub - github tool
+* git-fixup - neat way to fix up older commits by amending them
+* git-town - neat project management high level commands (git-town.com)
+* gnupg
+* mpv, youtube-dl
+* pigz, pbzip2 - parallel gz/bz2 programs
+* xz
+* vim
+* zsh
+* tmux
+* stow - dotfiles management
+
+Interesting:
+* git-appraise - distributed pull request type tool
+* git-vendor - manage external git repos (alt to submodules)
+* git-subrepo - another alt to submodules
+* gitslave - group together several slave repos into a master repo
+
+Homebrew Casks:
+
+* docker - uses docker-for-mac instead of virtualbox
+
+Unmanaged:
+* https://brew.sh/
+* https://github.com/zimfw/zimfw
+
