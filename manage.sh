@@ -17,7 +17,33 @@ function pull_subtree() {
     git pull -s subtree $name master
 }
 
+function init_external_file() {
+    local name=$1
+    local outdir=external/$2
+    local filename=$3
+    local repo=$4
+    mkdir -p $outdir
+    git remote add $name $repo
+    git fetch $name
+    git cat-file blob $name/master:$filename >$outdir/$filename
+    git add $outdir/$filename
+    git commit -m "Add $filename from $name in $outdir"
+}
+
+function pull_external_file() {
+    local name=$1
+    local outdir=external/$2
+    local filename=$3
+    git fetch $name
+    # XXX: it would be better if we could actually merge rather than overwrite
+    git cat-file blob $name/master:$filename >$outdir/$filename
+    git add $outdir/$filename
+    git commit -m "Update $filename from $name in $outdir"
+}
+
 function init_repos() {
+    init_external_file vim_plug .vim/autoload vim.plug https://github.com/junegunn/vim-plug.git
+    init_external_file sbt_extras bin sbt https://github.com/paulp/sbt-extras.git
     init_subtree zim .zim/ https://github.com/zimfw/zimfw.git
     init_subtree zim_history_substring_search .zim/modules/history-substring-search/external/ https://github.com/zsh-users/zsh-history-substring-search.git
     init_subtree zim_completion .zim/modules/completion/external/ https://github.com/zsh-users/zsh-completions.git
@@ -26,11 +52,11 @@ function init_repos() {
     init_subtree zim_liquidprompt .zim/modules/prompt/external-themes/liquidprompt/ https://github.com/nojhan/liquidprompt.git
     init_subtree zim_lean .zim/modules/prompt/external-themes/lean/ https://github.com/miekg/lean
     init_subtree zim_autosuggestions .zim/modules/autosuggestions/external/ https://github.com/zsh-users/zsh-autosuggestions.git
-    # https://github.com/junegunn/vim-plug.git plug.vim
-    # https://github.com/paulp/sbt-extras.git sbt
 }
 
 function pull_repos() {
+    pull_external_file vim_plug .vim/autoload vim.plug
+    pull_external_file sbt_extras bin sbt
     pull_subtree zim
     pull_subtree zim_history_substring_search
     pull_subtree zim_completion
