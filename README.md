@@ -1,12 +1,12 @@
-# ~/dotfiles
+# Matt's Home Modules
 
-To install:
+To initialize:
 
 ```sh
-git clone git@github.com:jvz/dotfiles.git
-cd dotfiles
+git clone git@github.com:jvz/matt.git
+cd matt
 ./manage.sh init
-stow zim
+stow external
 stow zsh
 stow vim
 stow git
@@ -15,5 +15,5 @@ stow git
 To update subtrees:
 
 ```sh
-./manage.sh update
+./manage.sh pull
 ```

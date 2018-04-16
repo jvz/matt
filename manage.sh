@@ -3,12 +3,13 @@
 # idea from https://help.github.com/articles/about-git-subtree-merges/
 function init_subtree() {
     local name=$1
-    local prefix=$2
+    local prefix=external/$2
     local repo=$3
     git remote add $name $repo
     git fetch $name
     git merge -s ours --no-commit --allow-unrelated-histories $name/master
     git read-tree --prefix=$prefix -u $name/master
+    git commit -m "Add $name subtree to $prefix"
 }
 
 function pull_subtree() {
@@ -17,14 +18,14 @@ function pull_subtree() {
 }
 
 function init_repos() {
-    init_subtree zim zim/.zim/ https://github.com/zimfw/zimfw.git
-    init_subtree zim_history_substring_search zim/.zim/modules/history-substring-search/external/ https://github.com/zsh-users/zsh-history-substring-search.git
-    init_subtree zim_completion zim/.zim/modules/completion/external/ https://github.com/zsh-users/zsh-completions.git
-    init_subtree zim_syntax_highlighting zim/.zim/modules/syntax-highlighting/external/ https://github.com/zsh-users/zsh-syntax-highlighting.git
-    init_subtree zim_pure zim/.zim/modules/prompt/external-themes/pure/ https://github.com/sindresorhus/pure.git
-    init_subtree zim_liquidprompt zim/.zim/modules/prompt/external-themes/liquidprompt/ https://github.com/nojhan/liquidprompt.git
-    init_subtree zim_lean zim/.zim/modules/prompt/external-themes/lean/ https://github.com/miekg/lean
-    init_subtree zim_autosuggestions zim/.zim/modules/autosuggestions/external/ https://github.com/zsh-users/zsh-autosuggestions.git
+    init_subtree zim .zim/ https://github.com/zimfw/zimfw.git
+    init_subtree zim_history_substring_search .zim/modules/history-substring-search/external/ https://github.com/zsh-users/zsh-history-substring-search.git
+    init_subtree zim_completion .zim/modules/completion/external/ https://github.com/zsh-users/zsh-completions.git
+    init_subtree zim_syntax_highlighting .zim/modules/syntax-highlighting/external/ https://github.com/zsh-users/zsh-syntax-highlighting.git
+    init_subtree zim_pure .zim/modules/prompt/external-themes/pure/ https://github.com/sindresorhus/pure.git
+    init_subtree zim_liquidprompt .zim/modules/prompt/external-themes/liquidprompt/ https://github.com/nojhan/liquidprompt.git
+    init_subtree zim_lean .zim/modules/prompt/external-themes/lean/ https://github.com/miekg/lean
+    init_subtree zim_autosuggestions .zim/modules/autosuggestions/external/ https://github.com/zsh-users/zsh-autosuggestions.git
     # https://github.com/junegunn/vim-plug.git plug.vim
     # https://github.com/paulp/sbt-extras.git sbt
 }
