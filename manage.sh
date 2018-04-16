@@ -76,6 +76,6 @@ if [[ $# != 1 ]]; then usage; fi
 
 case $1 in
     init) init_repos;;
-    update) pull_repos;;
+    pull) pull_repos;;
     *) usage;;
 esac
