@@ -42,7 +42,7 @@ function pull_external_file() {
 }
 
 function init_repos() {
-    init_external_file vim_plug .vim/autoload vim.plug https://github.com/junegunn/vim-plug.git
+    init_external_file vim_plug .vim/autoload plug.vim https://github.com/junegunn/vim-plug.git
     init_external_file sbt_extras bin sbt https://github.com/paulp/sbt-extras.git
     init_subtree zim .zim/ https://github.com/zimfw/zimfw.git
     init_subtree zim_history_substring_search .zim/modules/history-substring-search/external/ https://github.com/zsh-users/zsh-history-substring-search.git
@@ -55,7 +55,7 @@ function init_repos() {
 }
 
 function pull_repos() {
-    pull_external_file vim_plug .vim/autoload vim.plug
+    pull_external_file vim_plug .vim/autoload plug.vim
     pull_external_file sbt_extras bin sbt
     pull_subtree zim
     pull_subtree zim_history_substring_search
