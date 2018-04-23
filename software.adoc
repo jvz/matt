@@ -48,6 +48,12 @@
 * zsh
 * tmux
 
+=== Chat
+
+* weechat --with-python@2
+** /script install vimode.py
+* bitlbee
+
 === Interesting?
 * git-appraise - distributed pull request type tool
 * git-vendor - manage external git repos (alt to submodules)
